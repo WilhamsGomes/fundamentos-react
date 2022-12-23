@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
+
 import Post from "./Post";
 import Header from "./Header";
-
-
+import { ThemeProvider } from "./ThemeContext";
 
 function App(){
 
@@ -12,9 +12,6 @@ function App(){
         {id: Math.random(), title: "Title #03", subtitle: "Sub#03", likes: 25, read: false},
         {id: Math.random(), title: "Title #04", subtitle: "Sub#04", likes: 45, read: false},
     ]);
-
-
-    console.log({posts})
 
     function handleRefresh(){
         //Atualiza o estado e depende de valores que estão nele
@@ -36,8 +33,11 @@ function App(){
     }
 
     return(
-        <>
-            <Header title="Jornal do comércio">
+   
+        <ThemeProvider>
+            <Header 
+                title="Jornal do comércio" 
+            >
                 <h2>
                     Posts da semana sobre esportes
                     <button onClick={handleRefresh}>Atualizar</button>    
@@ -54,7 +54,7 @@ function App(){
                 />
             ))}
 
-        </>
+        </ThemeProvider>
     );
 }
 
